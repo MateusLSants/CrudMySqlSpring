@@ -3,6 +3,7 @@ package com.dev.backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/")
-    public Usuario inserir(@RequestBody Usuario usuario) {
+    public Usuario inserir(@RequestBody Usuario usuario)
+    {
         return usuarioServices.inserir(usuario);
     }
 
@@ -43,4 +45,14 @@ public class UsuarioController {
         usuarioServices.excluir(id);
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> validarSenha(@RequestBody Usuario usuario) {
+        Boolean valid = usuarioServices.validarSenha(usuario);
+        if (!valid) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.status(200).build();
+    }
+
 }
