@@ -2,6 +2,8 @@ package com.dev.backend.controllers;
 
 import java.util.List;
 
+import com.dev.backend.Exceptions.EntityException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import com.dev.backend.services.UsuarioServices;
 
 @RestController
 @RequestMapping("/api/usuario")
-public class UsuarioController {
+public class UsuarioController extends EntityException {
     
     @Autowired
     private UsuarioServices usuarioServices;
@@ -30,13 +32,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/")
-    public Usuario inserir(@RequestBody Usuario usuario)
+    public Usuario inserir(@RequestBody @Valid Usuario usuario)
     {
         return usuarioServices.inserir(usuario);
     }
 
     @PutMapping("/")
-    public Usuario alterar(@RequestBody Usuario usuario) {
+    public Usuario alterar(@RequestBody @Valid Usuario usuario) {
         return usuarioServices.alterar(usuario);
     }
 
