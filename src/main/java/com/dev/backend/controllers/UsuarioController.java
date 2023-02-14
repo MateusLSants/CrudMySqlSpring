@@ -38,7 +38,7 @@ public class UsuarioController {
         return usuarioServices.alterar(usuario);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
         usuarioServices.excluir(id);
         return ResponseEntity.ok().build();
