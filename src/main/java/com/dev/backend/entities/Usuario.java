@@ -11,7 +11,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "usuario")
@@ -22,14 +25,25 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
     private String nome;
+
+    @CPF
+    @NotBlank
     private String cpf;
+
+    @Email
+    @NotBlank
     private String email;
+
+    @NotBlank
     private String senha;
+
+    @NotBlank
     private String endereco;
-    private String cep;
 
     @ManyToOne
+    @NotBlank
     private Cidade cidade;
 
     @Temporal(TemporalType.TIMESTAMP)
