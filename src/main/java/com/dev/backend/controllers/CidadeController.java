@@ -2,6 +2,8 @@ package com.dev.backend.controllers;
 
 import java.util.List;
 
+import com.dev.backend.Exceptions.EntityException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +20,7 @@ import com.dev.backend.services.CidadeServices;
 
 @RestController
 @RequestMapping("api/cidade")
-public class CidadeController {
+public class CidadeController extends EntityException {
 
     @Autowired
     private CidadeServices cidadeServices;
@@ -29,12 +31,12 @@ public class CidadeController {
     }
 
     @PostMapping("/")
-    public Cidade inserir(@RequestBody Cidade cidade) {
+    public Cidade inserir(@RequestBody @Valid Cidade cidade) {
         return cidadeServices.inserir(cidade);
     }
 
     @PutMapping("/")
-    public Cidade alterar(@RequestBody Cidade cidade) {
+    public Cidade alterar(@RequestBody @Valid Cidade cidade) {
         return cidadeServices.alterar(cidade);
     }
 
