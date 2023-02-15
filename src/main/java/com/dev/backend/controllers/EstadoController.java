@@ -3,6 +3,7 @@ package com.dev.backend.controllers;
 import java.util.List;
 
 import com.dev.backend.Exceptions.EntityException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,12 +32,12 @@ public class EstadoController extends EntityException {
     }
 
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado estado) {
+    public Estado inserir(@RequestBody @Valid Estado estado) {
         return estadoServices.inserir(estado);
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado) {
+    public Estado alterar(@RequestBody @Valid Estado estado) {
         return estadoServices.alterar(estado);
     }
 
