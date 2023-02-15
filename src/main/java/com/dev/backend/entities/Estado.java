@@ -20,10 +20,10 @@ public class Estado{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank()
+    @NotBlank(message = "O campo nome deve ser informado")
     private String nome;
 
-    @NotBlank()
+    @NotBlank(message = "O campo sigla deve ser informado")
     private String sigla;
 
     @Temporal(TemporalType.TIMESTAMP)
