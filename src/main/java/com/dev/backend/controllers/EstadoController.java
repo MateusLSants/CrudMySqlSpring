@@ -2,6 +2,7 @@ package com.dev.backend.controllers;
 
 import java.util.List;
 
+import com.dev.backend.Exceptions.EntityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +20,7 @@ import com.dev.backend.services.EstadoServices;
 
 @RestController
 @RequestMapping("/api/estado")
-public class EstadoController {
+public class EstadoController extends EntityException {
     
     @Autowired
     private EstadoServices estadoServices;

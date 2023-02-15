@@ -3,6 +3,7 @@ package com.dev.backend.services;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,13 @@ public class EstadoServices {
         return estadoRepository.findAll();
     }
 
-    public Estado inserir(Estado estado) {
+    public Estado inserir(@Valid Estado estado) {
         estado.setDataCriacao(new Date());
         Estado estadoNovo = estadoRepository.saveAndFlush(estado);
         return estadoNovo;
     }
 
-    public Estado alterar(Estado estado) {
+    public Estado alterar(@Valid Estado estado) {
         estado.setDataAtualizacao(new Date());
         return estadoRepository.saveAndFlush(estado);
     }
