@@ -10,11 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.dev.backend.entities.Usuario;
 import com.dev.backend.repository.UsuarioRepository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class UsuarioServices {
-
 
     @Autowired
     private UsuarioRepository usuarioRepository;
