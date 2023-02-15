@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -18,8 +19,11 @@ public class Estado{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
+    @NotBlank(message = "O campo nome deve ser informado")
     private String nome;
+
+    @NotBlank(message = "O campo sigla deve ser informado")
     private String sigla;
 
     @Temporal(TemporalType.TIMESTAMP)
